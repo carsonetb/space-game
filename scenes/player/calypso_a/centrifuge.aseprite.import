@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2qko00enc1tt"
+path="res://.godot/imported/centrifuge.aseprite-1c24577a1c9ba7040b6c2f49b1413bfc.res"
+
+[deps]
+
+source_file="res://scenes/player/calypso_a/centrifuge.aseprite"
+dest_files=["res://.godot/imported/centrifuge.aseprite-1c24577a1c9ba7040b6c2f49b1413bfc.res"]
+
+[params]
+

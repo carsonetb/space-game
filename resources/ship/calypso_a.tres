@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ShipResource" load_steps=3 format=3 uid="uid://dnspt4tr73fib"]
+
+[ext_resource type="Script" uid="uid://bd4wayp1v3upa" path="res://resources/ship/ship.gd" id="1_b57je"]
+[ext_resource type="PackedScene" uid="uid://bb63crkq3g13q" path="res://resources/ship/calypso_a.tscn" id="1_nik3u"]
+
+[resource]
+script = ExtResource("1_b57je")
+scene = ExtResource("1_nik3u")
+dry_mass = 15000000.0
+length = 400.0
+length_width_coef = 0.25
+main_propellant_mass = 87000000.0
+main_propellant_density = 71.0
+main_engine_efficiency = 12000.0
+main_engine_thrust_force = 1000000000.0
+rcs_mass = 300000.0
+rcs_monopropellant_density = 1020.0
+rcs_efficiency = 350.0
+rcs_rotation_force = 400000.0
+metadata/_custom_type_script = "uid://bd4wayp1v3upa"

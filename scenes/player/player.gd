@@ -7,6 +7,7 @@ enum State {
 }
 
 @export var input: PlayerInput
+@export var ship: ShipResource
 
 var angular_velocity: float = 0.0
 
@@ -39,6 +40,11 @@ var rcs_rotation_force: float = 400_000.0 ## Newtons
 var length_width_coefficient: float = 1.0 / 10.0
 
 var was_jump_pressed: bool = false
+
+func _ready() -> void:
+	add_child(ship.scene.instantiate())
+	main_propellant_mass = ship.main_propellant_mass
+	rcs_mass = ship.rcs_mass
 
 func _process(delta: float) -> void:
 	input.process_inputs()
