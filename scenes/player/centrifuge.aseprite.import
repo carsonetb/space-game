@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2qko00enc1tt"
+path="res://.godot/imported/centrifuge.aseprite-651e3dedc0acfe5be05e663324581fa2.res"
+
+[deps]
+
+source_file="res://scenes/player/centrifuge.aseprite"
+dest_files=["res://.godot/imported/centrifuge.aseprite-651e3dedc0acfe5be05e663324581fa2.res"]
+
+[params]
+

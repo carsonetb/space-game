@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c1qhhq37gkua2"
+path="res://.godot/imported/silver_ball.aseprite-36579f194b8a308df4cefbc344c0ce49.res"
+
+[deps]
+
+source_file="res://scenes/player/silver_ball.aseprite"
+dest_files=["res://.godot/imported/silver_ball.aseprite-36579f194b8a308df4cefbc344c0ce49.res"]
+
+[params]
+

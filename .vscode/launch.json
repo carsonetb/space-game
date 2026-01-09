@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Client",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}",
+            "port": 6000, // Use a specific port for the client
+        },
+        {
+            "name": "Launch Server",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}",
+            "port": 6001, // Use a different port for the server
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Multiple Instances",
+            "configurations": ["Launch Client", "Launch Server"]
+        }
+    ]
+}

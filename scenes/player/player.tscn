@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=4 uid="uid://cmi366853wu3l"]
+
+[ext_resource type="Script" uid="uid://bckpa328y35xq" path="res://scenes/player/player_input.gd" id="1_a8v3n"]
+[ext_resource type="Script" uid="uid://cirkjn2wgef7o" path="res://scenes/player/player.gd" id="1_fdpfy"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dovo2"]
+_data = PackedByteArray("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")
+size_override = Vector2(400, 96)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
+script = ExtResource("1_fdpfy")
+input = NodePath("Input")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(97, -48, 97, -42.5, 101, -39.5, 101, -38.1, 121, -37, 129.79999, -37, 147, -33, 137.5, -33, 134.5, -29, 133, -29, 133, -5.5999985, 131.20001, -4.799999, 130, -5.5999985, 130, -7.5999985, 124.20001, -4.799999, 123, -5.5999985, 123, -7.5999985, 117.20001, -4.799999, 116, -5.5999985, 116, -7.5999985, 110.20001, -4.799999, 109, -5.5999985, 109, -7.5999985, 103.20001, -4.799999, 102, -5.5999985, 102, -7.5999985, 96.20001, -4.799999, 95, -5.5999985, 95, -7.5999985, 89.20001, -4.799999, 88, -5.5999985, 88, -7.5999985, 82.20001, -4.799999, 81, -5.5999985, 81, -7.5999985, 75.20001, -4.799999, 74, -5.5999985, 74, -7.5999985, 68.20001, -4.799999, 67, -5.5999985, 67, -7.5999985, 61.200012, -4.799999, 60, -5.5999985, 60, -7.5999985, 54.199997, -4.799999, 53, -5.5999985, 53, -7.5999985, 47.199997, -4.799999, 46, -5.5999985, 46, -7.5999985, 40.199997, -4.799999, 39, -5.5999985, 39, -7.5999985, 33.199997, -4.799999, 32, -5.5999985, 32, -7.5999985, 26.199997, -4.799999, 25, -5.5999985, 25, -7.5999985, 19.199997, -4.799999, 18, -5.5999985, 18, -7.5999985, 12.199997, -4.799999, 11, -5.5999985, 11, -7.5999985, 5.199997, -4.799999, 4, -5.5999985, 4, -7.5999985, -1.800003, -4.799999, -3, -5.5999985, -3, -7.5999985, -8.800003, -4.799999, -10, -5.5999985, -10, -7.5999985, -15.800003, -4.799999, -17, -5.5999985, -17, -7.5999985, -22.800003, -4.799999, -24, -5.5999985, -24, -7.5999985, -29.800003, -4.799999, -31, -5.5999985, -31, -7.5999985, -36.800003, -4.799999, -38, -5.5999985, -38, -7.5999985, -43.800003, -4.799999, -45, -5.5999985, -45, -7.5999985, -50.800003, -4.799999, -52, -5.5999985, -52, -7.5999985, -57.800003, -4.799999, -59, -5.5999985, -59, -7.5999985, -64.8, -4.799999, -66, -5.5999985, -66, -7.5999985, -71.8, -4.799999, -73, -5.5999985, -73, -7.5999985, -78.8, -4.799999, -80, -5.5999985, -80, -7.5999985, -85.8, -4.799999, -87, -5.5999985, -87, -7.5999985, -92.8, -4.799999, -94, -5.5999985, -94, -7.5999985, -99.8, -4.799999, -101, -5.5999985, -101, -7.5999985, -106.8, -4.799999, -108, -5.5999985, -108, -7.5999985, -113.8, -4.799999, -115, -5.5999985, -115, -7.5999985, -120.8, -4.799999, -122, -5.5999985, -122, -7.5999985, -127.8, -4.799999, -129, -5.5999985, -129, -7.5999985, -134.8, -4.799999, -136, -5.5999985, -136, -7.5999985, -141.8, -4.799999, -143, -5.5999985, -143, -7.5999985, -148.8, -4.799999, -150, -5.5999985, -150, -7.5999985, -155.8, -4.799999, -157, -5.5999985, -157, -7.5999985, -162.8, -4.799999, -164, -5.5999985, -164, -7.5999985, -169.8, -4.799999, -171, -5.5999985, -171, -7.5999985, -176.8, -4.799999, -178, -5.5999985, -178, -7.5999985, -183.8, -4.799999, -185, -5.5999985, -185, -6.700001, -186.2, -7.200001, -188.4, -5, -190.4, -5, -188.7, 0, -188, 0, -190, 1.4000015, -190, 4.5999985, -188, 5.5999985, -188, 6.5999985, -186.9, 7.200001, -183.3, 4.5999985, -182, 5.5, -182, 7.5999985, -176.3, 4.700001, -175, 5.5, -175, 7.5999985, -169.3, 4.700001, -168, 5.5, -168, 7.5999985, -162.3, 4.700001, -161, 5.5, -161, 7.5999985, -155.3, 4.700001, -154, 5.5, -154, 7.5999985, -148.3, 4.700001, -147, 5.5, -147, 7.5999985, -141.3, 4.700001, -140, 5.5, -140, 7.5999985, -134.3, 4.700001, -133, 5.5, -133, 7.5999985, -127.3, 4.700001, -126, 5.5, -126, 7.5999985, -120.3, 4.700001, -119, 5.5, -119, 7.5999985, -113.3, 4.700001, -112, 5.5, -112, 7.5999985, -106.3, 4.700001, -105, 5.5, -105, 7.5999985, -99.3, 4.700001, -98, 5.5, -98, 7.5999985, -92.3, 4.700001, -91, 5.5, -91, 7.5999985, -85.3, 4.700001, -84, 5.5, -84, 7.5999985, -78.3, 4.700001, -77, 5.5, -77, 7.5999985, -71.3, 4.700001, -70, 5.5, -70, 7.5999985, -64.3, 4.700001, -63, 5.5, -63, 7.5999985, -57.300003, 4.700001, -56, 5.5, -56, 7.5999985, -50.300003, 4.700001, -49, 5.5, -49, 7.5999985, -43.300003, 4.700001, -42, 5.5, -42, 7.5999985, -36.300003, 4.700001, -35, 5.5, -35, 7.5999985, -29.600006, 4.799999, -27.399994, 7, -24.5, 7, -22.5, 4, -20.5, 7, -17.5, 7, -15.5, 4, -13.5, 7, -10.5, 7, -8.5, 4, -6.5, 7, -3.5, 7, -1.5, 4, 0.5, 7, 3.5, 7, 5.5, 4, 7.5, 7, 10.5, 7, 12.5, 4, 14.5, 7, 17.5, 7, 19.5, 4, 21.5, 7, 24.5, 7, 26.5, 4, 28.5, 7, 31.5, 7, 33.5, 4, 35.5, 7, 38.5, 7, 40.5, 4, 42.5, 7, 45.5, 7, 47.5, 4, 49.5, 7, 52.5, 7, 54.5, 4, 56.5, 7, 59.5, 7, 61.5, 4, 63.5, 7, 66.5, 7, 68.5, 4, 70.5, 7, 73.5, 7, 75.5, 4, 77.5, 7, 80.5, 7, 82.5, 4, 84.5, 7, 87.5, 7, 89.5, 4, 91.5, 7, 94.5, 7, 96.5, 4, 98.5, 7, 101.5, 7, 103.5, 4, 105.5, 7, 108.5, 7, 110.5, 4, 112.5, 7, 115.5, 7, 117.5, 4, 119.5, 7, 122.5, 7, 124.5, 4, 126.5, 7, 129.5, 7, 131.5, 4, 133, 5.4000015, 133, 29.5, 137, 32.5, 137, 34, 144, 34, 120.79999, 38, 101.5, 38, 98.5, 42, 96.79999, 42, 98, 48, 143.20001, 48, 164.20001, 43, 169.20001, 43, 177.1, 40, 180.4, 40, 185.4, 36, 187.5, 36, 193.5, 29, 194.70001, 29, 199.70001, 14, 200, -15.200001, 197, -21.2, 197, -24.4, 195, -26.4, 195, -28.5, 188, -34.6, 188, -35.7, 185, -36.7, 185, -37.8, 178, -39.8, 178, -40.9, 170, -41.9, 170, -42.8, 140, -47.9)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 1.5707964
+ignore_rotation = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("1_a8v3n")
+metadata/_custom_type_script = "uid://bckpa328y35xq"
+
+[node name="TorchSpaceship" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(559, -178)
+texture = SubResource("PortableCompressedTexture2D_dovo2")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://scenes/player/torch_spaceship.aseprite",
+"source_uid": 8467601258387137379
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6c33b796f5d763a2be73cadb6a70021f"
