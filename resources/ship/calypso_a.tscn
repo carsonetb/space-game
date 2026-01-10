@@ -1,20 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb63crkq3g13q"]
 
 [ext_resource type="Script" uid="uid://bnltqkej3cod1" path="res://scenes/player/calypso_a/animations.gd" id="1_g3dfe"]
-
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_g3dfe"]
-size_override = Vector2(400, 96)
+[ext_resource type="Texture2D" uid="uid://bvnsmf4jfu2xc" path="res://scenes/player/calypso_a/calypso_a.aseprite" id="2_7yvou"]
 
 [node name="CalypsoA" type="Node2D"]
 script = ExtResource("1_g3dfe")
-supports_life = null
 
 [node name="TorchSpaceship" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_g3dfe")
+texture = ExtResource("2_7yvou")
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
-"pending_changes": {}
+"pending_changes": {
+"source": "res://scenes/player/calypso_a/torch_spaceship.aseprite",
+"source_uid": -1
+}
 }
 metadata/_aseprite_wizard_config_ = {
 "convert_fps_field": 60.0,

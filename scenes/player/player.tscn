@@ -16,8 +16,6 @@ polygon = PackedVector2Array(97, -48, 97, -42.5, 101, -39.5, 101, -38.1, 121, -3
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 1.5707964
 ignore_rotation = false
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("1_a8v3n")

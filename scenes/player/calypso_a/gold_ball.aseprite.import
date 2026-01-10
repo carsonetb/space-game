@@ -1,7 +1,7 @@
 [remap]
 
-importer="aseprite_wizard.plugin.noop"
-type="PackedDataContainer"
+importer="aseprite_wizard.plugin.static-texture"
+type="PortableCompressedTexture2D"
 uid="uid://c88p2p8bgo3l2"
 path="res://.godot/imported/gold_ball.aseprite-8c28fe0b43f8f4b7896919e6d0d2a83d.res"
 
@@ -12,3 +12,9 @@ dest_files=["res://.godot/imported/gold_ball.aseprite-8c28fe0b43f8f4b7896919e6d0
 
 [params]
 
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+first_frame_only=true
+sheet/sheet_type="packed"
+sheet/sheet_columns=12
+sheet/scale=1
