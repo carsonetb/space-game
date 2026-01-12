@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8eql4qap8qca"]
+
+[ext_resource type="Script" uid="uid://bedegfdt8gsic" path="res://scenes/planet.gd" id="1_5fdy0"]
+[ext_resource type="Script" uid="uid://cs41cmp4f6pfn" path="res://components/space_object.gd" id="2_ggt7d"]
+[ext_resource type="Script" uid="uid://vwc6ucqyq0jv" path="res://components/massive_object.gd" id="3_0k1rn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r7r6h"]
+noise_type = 3
+fractal_weighted_strength = 0.31
+domain_warp_type = 2
+domain_warp_amplitude = 8.726
+domain_warp_frequency = 0.686
+domain_warp_fractal_type = 0
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_5fdy0")
+noise = SubResource("FastNoiseLite_r7r6h")
+radius = 1000.0
+mountain_height = 100.0
+density = 400.0
+pow_b = 4.083
+
+[node name="SpaceObject" type="Node" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("2_ggt7d")
+object = NodePath("..")
+metadata/_custom_type_script = "uid://cs41cmp4f6pfn"
+
+[node name="MassiveObject" type="Node" parent="." node_paths=PackedStringArray("object", "space_object")]
+script = ExtResource("3_0k1rn")
+object = NodePath("..")
+space_object = NodePath("../SpaceObject")
+mass = 10000000000.0
+metadata/_custom_type_script = "uid://vwc6ucqyq0jv"

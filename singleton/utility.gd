@@ -1,7 +1,9 @@
+@tool
 extends Node
 
 const SPEED_OF_LIGHT: float = 299_792_458.0 ## m/s
 const GRAVITY: float = 9.81 ## m/s^2
+const GRAVITATIONAL_CONSTANT: float = 0.001 ## N m^2/kg^2
 
 ## Emitted when the drawing origin (of the player) is modified. 
 ## Ignore the local_position property.
@@ -57,3 +59,23 @@ func calculate_rotation_accel(rotation_input: float, body_length: float, body_ma
 ## returns: kilograms / second
 func calculate_fuel_usage(thruster_force: float, efficiency: float) -> float:
 	return thruster_force / (efficiency * GRAVITY)
+
+func scale_pow(x: float, a: float, b: float) -> float:
+	return a * (x / a) ** b
+
+func get_viewport_position() -> Vector2:
+	if Engine.is_editor_hint():
+		var editor_viewport_2d = EditorInterface.get_editor_viewport_2d()
+		var transform: Transform2D = editor_viewport_2d.global_canvas_transform
+		var viewport_center_screen_pos: Vector2 = editor_viewport_2d.size / 2.0
+		return transform.affine_inverse() * viewport_center_screen_pos
+	else:
+		return get_viewport().get_camera_2d().global_position
+
+## Takes m1 (kg), m2 (kg), and distance (m) and returns 
+## force (N)
+func calculate_gravity(m1: float, m2: float, distance: float) -> float:
+	return GRAVITATIONAL_CONSTANT * ((m1 * m2) / distance ** 2)
+
+func calculate_gravity_positions(m1: float, m2:float, p1: Vector2, p2: Vector2) -> float:
+	return calculate_gravity(m1, m2, p1.distance_to(p2))

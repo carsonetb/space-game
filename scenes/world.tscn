@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpjxmitshu5r7"]
+[gd_scene load_steps=5 format=3 uid="uid://bpjxmitshu5r7"]
 
 [ext_resource type="Script" uid="uid://dsba5u8ln2gos" path="res://scenes/world.gd" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://cmi366853wu3l" path="res://scenes/player/player.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://c8eql4qap8qca" path="res://scenes/planet.tscn" id="3_4wyf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
 size = Vector2(1240, 70)
@@ -16,4 +17,9 @@ position = Vector2(558, 622)
 shape = SubResource("RectangleShape2D_rwgxs")
 
 [node name="Player" parent="." instance=ExtResource("2_rwgxs")]
-position = Vector2(558, 314)
+position = Vector2(-1437, 2)
+rotation = -1.5707964
+
+[node name="Planet" parent="." instance=ExtResource("3_4wyf3")]
+position = Vector2(-5, 6)
+quality_divider = 13.455005317634024
