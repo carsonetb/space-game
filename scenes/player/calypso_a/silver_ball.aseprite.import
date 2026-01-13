@@ -3,12 +3,11 @@
 importer="aseprite_wizard.plugin.static-texture"
 type="PortableCompressedTexture2D"
 uid="uid://c1qhhq37gkua2"
-path="res://.godot/imported/silver_ball.aseprite-43b200bad9757cc3f786e9b945975439.res"
+valid=false
 
 [deps]
 
 source_file="res://scenes/player/calypso_a/silver_ball.aseprite"
-dest_files=["res://.godot/imported/silver_ball.aseprite-43b200bad9757cc3f786e9b945975439.res"]
 
 [params]
 

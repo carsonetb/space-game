@@ -3,12 +3,11 @@
 importer="aseprite_wizard.plugin.static-texture"
 type="PortableCompressedTexture2D"
 uid="uid://c88p2p8bgo3l2"
-path="res://.godot/imported/gold_ball.aseprite-8c28fe0b43f8f4b7896919e6d0d2a83d.res"
+valid=false
 
 [deps]
 
 source_file="res://scenes/player/calypso_a/gold_ball.aseprite"
-dest_files=["res://.godot/imported/gold_ball.aseprite-8c28fe0b43f8f4b7896919e6d0d2a83d.res"]
 
 [params]
 

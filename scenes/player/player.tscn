@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmi366853wu3l"]
+[gd_scene load_steps=8 format=3 uid="uid://cmi366853wu3l"]
 
 [ext_resource type="Script" uid="uid://bckpa328y35xq" path="res://scenes/player/player_input.gd" id="1_a8v3n"]
 [ext_resource type="Script" uid="uid://cirkjn2wgef7o" path="res://scenes/player/player.gd" id="1_fdpfy"]
@@ -6,14 +6,16 @@
 [ext_resource type="Script" uid="uid://nw3wiailsnsf" path="res://components/gravity_object.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cs41cmp4f6pfn" path="res://components/space_object.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://vwc6ucqyq0jv" path="res://components/massive_object.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://kh22i5wyryf" path="res://components/future_simulator.gd" id="6_0owmy"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input", "msv_obj", "gravity", "space_object", "camera")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input", "msv_obj", "gravity", "space_object", "sim", "camera")]
 script = ExtResource("1_fdpfy")
 input = NodePath("Input")
 ship = ExtResource("2_gmlin")
 msv_obj = NodePath("MassiveObject")
 gravity = NodePath("PCGravityObject")
 space_object = NodePath("SpaceObject")
+sim = NodePath("FutureSimulator")
 camera = NodePath("Camera2D")
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
@@ -38,6 +40,13 @@ metadata/_custom_type_script = "uid://vwc6ucqyq0jv"
 script = ExtResource("5_75vfm")
 object = NodePath("..")
 metadata/_custom_type_script = "uid://cs41cmp4f6pfn"
+
+[node name="FutureSimulator" type="Node" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("6_0owmy")
+object = NodePath("..")
+simulate_function = "_future_simulate"
+preserve_properties = Array[String](["position", "velocity"])
+metadata/_custom_type_script = "uid://kh22i5wyryf"
 
 [node name="PCGravityObject" type="Area2D" parent="." node_paths=PackedStringArray("msv_obj", "object")]
 script = ExtResource("4_lvxji")

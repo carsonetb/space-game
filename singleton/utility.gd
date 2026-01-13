@@ -91,10 +91,9 @@ func get_meters_per_pixel(camera: Camera2D) -> float:
 func get_gravitational_param(m1: float, m2: float) -> float:
 	return GRAVITATIONAL_CONSTANT * m1 * m2
 
-func orbital_prediction(craft_pos: Vector2, planet_pos: Vector2, craft_vel: Vector2, planet_vel: Vector2, gravitational_param: float) -> Vector2:
+func orbital_prediction(craft_pos: Vector2, planet_pos: Vector2, craft_vel: Vector2, planet_vel: Vector2, gravitational_param: float, angle: float) -> Vector2:
 	var r := planet_pos - craft_pos
 	var v := craft_vel - planet_vel
 	var distance := r.length()
 	var orbital_energy := v.dot(v) / 2.0 - gravitational_param / distance
 	var a := -(gravitational_param / (2.0 * orbital_energy))
-	

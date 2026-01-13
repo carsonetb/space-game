@@ -11,6 +11,7 @@ enum State {
 @export var msv_obj: MassiveObject
 @export var gravity: PCGravityObject
 @export var space_object: SpaceObject
+@export var sim: FutureSimulator
 @export var camera: Camera2D
 @export var test_planet: Planet
 
@@ -30,12 +31,13 @@ var length_width_coefficient: float = 1.0 / 10.0
 
 var was_jump_pressed: bool = false
 
+var trajectory: Array[Vector2]
+
 func _ready() -> void:
 	add_child(ship.scene.instantiate())
 	main_propellant_mass = ship.main_propellant_mass
 	rcs_mass = ship.rcs_mass
 	velocity.y = Util.calculate_ideal_orbit(global_position.distance_to(test_planet.global_position), test_planet.mass)
-	print(velocity.y)
 
 func _process(delta: float) -> void:
 	input.process_inputs()
@@ -46,10 +48,22 @@ func _process(delta: float) -> void:
 	match state:
 		State.NEWTONIAN:
 			_newtonian(delta)
-			return
 		State.SUPERCRUISE:
 			_supercruise(delta)
-			return
+	
+	var out := sim.simulate(5000, 10.0) # TODO: This is sloooow
+	trajectory.clear()
+	for obj_state in out:
+		trajectory.append(to_local(obj_state.properties["position"]))
+	queue_redraw()
+
+func _draw() -> void:
+	if !trajectory.is_empty():
+		draw_polyline(trajectory, Color.WHITE, 10.0)
+
+func _future_simulate(delta: float) -> void:
+	_gravity(delta)
+	position += velocity * delta
 
 func _zoom() -> void:
 	if input.zoom_in:
@@ -85,9 +99,10 @@ func _gravity(delta: float) -> void:
 	for node in get_tree().get_nodes_in_group("massive_objects"):
 		assert(node is MassiveObject)
 		var as_massive := node as MassiveObject
+		if as_massive.object == self:
+			continue
 		var direction := global_position.direction_to(as_massive.get_position().local_position)
 		var force := gravity.get_gravity_force()
-		print(force / gravity.mass)
 		velocity.x += (force / ship_mass) * direction.x * delta
 		velocity.y += (force / ship_mass) * direction.y * delta
 
@@ -118,6 +133,8 @@ func _supercruise(delta: float) -> void:
 	delta *= Util.supercruise_time_scale
 
 	_movement(delta, false)
+	_gravity(delta)
+	
 	position += velocity * delta
 
 	space_object.update(delta)
