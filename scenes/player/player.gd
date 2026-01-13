@@ -8,11 +8,15 @@ enum State {
 
 @export var input: PlayerInput
 @export var ship: ShipResource
+@export var msv_obj: MassiveObject
+@export var gravity: PCGravityObject
+@export var space_object: SpaceObject
+@export var camera: Camera2D
+@export var test_planet: Planet
 
 var angular_velocity: float = 0.0
 
 var peer_id: int = 0
-var space_pos: SpacePosition = SpacePosition.new(0, 0, Vector2.ZERO)
 var state := State.NEWTONIAN
 
 var ship_mass: float:
@@ -30,9 +34,14 @@ func _ready() -> void:
 	add_child(ship.scene.instantiate())
 	main_propellant_mass = ship.main_propellant_mass
 	rcs_mass = ship.rcs_mass
+	velocity.y = Util.calculate_ideal_orbit(global_position.distance_to(test_planet.global_position), test_planet.mass)
+	print(velocity.y)
 
 func _process(delta: float) -> void:
 	input.process_inputs()
+	msv_obj.mass = ship_mass
+
+	_zoom()
 	
 	match state:
 		State.NEWTONIAN:
@@ -41,6 +50,12 @@ func _process(delta: float) -> void:
 		State.SUPERCRUISE:
 			_supercruise(delta)
 			return
+
+func _zoom() -> void:
+	if input.zoom_in:
+		camera.zoom *= 1.1
+	if input.zoom_out:
+		camera.zoom /= 1.1
 
 func _movement(delta: float, inputs_enabled: bool = true) -> void:
 	if inputs_enabled:
@@ -71,9 +86,10 @@ func _gravity(delta: float) -> void:
 		assert(node is MassiveObject)
 		var as_massive := node as MassiveObject
 		var direction := global_position.direction_to(as_massive.get_position().local_position)
-		var force := Util.calculate_gravity_positions(ship_mass, as_massive.mass, global_position, as_massive.get_position().local_position)
-		print(ship_mass, " ", as_massive.mass, " ", global_position.distance_to(as_massive.get_position().local_position))
-		velocity += (force / ship_mass) * direction * delta
+		var force := gravity.get_gravity_force()
+		print(force / gravity.mass)
+		velocity.x += (force / ship_mass) * direction.x * delta
+		velocity.y += (force / ship_mass) * direction.y * delta
 
 func _newtonian(delta: float) -> void:
 	_movement(delta)
@@ -81,7 +97,7 @@ func _newtonian(delta: float) -> void:
 
 	move_and_slide()
 
-	_update_sector()
+	space_object.update(delta)
 
 	if velocity.length() > 3_000.0:
 		CustomLogger.info("Switching from newtonian mode to supercruise mode (reason: velocity > 3,000m/s).")
@@ -104,7 +120,7 @@ func _supercruise(delta: float) -> void:
 	_movement(delta, false)
 	position += velocity * delta
 
-	_update_sector()
+	space_object.update(delta)
 
 	if input.increase_time_speed && Util.time_scale_index < Util.time_scale_values.size() - 1:
 		Util.time_scale_index += 1
@@ -117,14 +133,6 @@ func _supercruise(delta: float) -> void:
 
 func _calculate_mass() -> float:
 	return ship.dry_mass + main_propellant_mass + rcs_mass
-
-func _update_sector() -> void:
-	var old_sector_x := space_pos.sector_x
-	var old_sector_y := space_pos.sector_y
-	space_pos.set_and_normalize(position)
-
-	if old_sector_x != space_pos.sector_x || old_sector_y != space_pos.sector_y:
-		Util.sector_origin = space_pos
 
 func _check_jump() -> bool:
 	if !was_jump_pressed && input.jump:

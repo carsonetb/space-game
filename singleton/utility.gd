@@ -3,7 +3,7 @@ extends Node
 
 const SPEED_OF_LIGHT: float = 299_792_458.0 ## m/s
 const GRAVITY: float = 9.81 ## m/s^2
-const GRAVITATIONAL_CONSTANT: float = 0.001 ## N m^2/kg^2
+const GRAVITATIONAL_CONSTANT: float = 6.674e-11 ## N m^2/kg^2
 
 ## Emitted when the drawing origin (of the player) is modified. 
 ## Ignore the local_position property.
@@ -79,3 +79,22 @@ func calculate_gravity(m1: float, m2: float, distance: float) -> float:
 
 func calculate_gravity_positions(m1: float, m2:float, p1: Vector2, p2: Vector2) -> float:
 	return calculate_gravity(m1, m2, p1.distance_to(p2))
+
+## Calculate a velocity tangential to the planet to have 
+## a circular orbit.
+func calculate_ideal_orbit(dist: float, other_mass: float) -> float:
+	return sqrt((GRAVITATIONAL_CONSTANT * other_mass) / dist)
+
+func get_meters_per_pixel(camera: Camera2D) -> float:
+	return 1.0 / camera.zoom.length()
+
+func get_gravitational_param(m1: float, m2: float) -> float:
+	return GRAVITATIONAL_CONSTANT * m1 * m2
+
+func orbital_prediction(craft_pos: Vector2, planet_pos: Vector2, craft_vel: Vector2, planet_vel: Vector2, gravitational_param: float) -> Vector2:
+	var r := planet_pos - craft_pos
+	var v := craft_vel - planet_vel
+	var distance := r.length()
+	var orbital_energy := v.dot(v) / 2.0 - gravitational_param / distance
+	var a := -(gravitational_param / (2.0 * orbital_energy))
+	

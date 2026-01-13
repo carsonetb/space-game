@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmi366853wu3l"]
+[gd_scene load_steps=7 format=3 uid="uid://cmi366853wu3l"]
 
 [ext_resource type="Script" uid="uid://bckpa328y35xq" path="res://scenes/player/player_input.gd" id="1_a8v3n"]
 [ext_resource type="Script" uid="uid://cirkjn2wgef7o" path="res://scenes/player/player.gd" id="1_fdpfy"]
 [ext_resource type="Resource" uid="uid://dnspt4tr73fib" path="res://resources/ship/calypso_a.tres" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://nw3wiailsnsf" path="res://components/gravity_object.gd" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://cs41cmp4f6pfn" path="res://components/space_object.gd" id="5_75vfm"]
+[ext_resource type="Script" uid="uid://vwc6ucqyq0jv" path="res://components/massive_object.gd" id="5_p47bc"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input", "msv_obj", "gravity", "space_object", "camera")]
 script = ExtResource("1_fdpfy")
 input = NodePath("Input")
 ship = ExtResource("2_gmlin")
+msv_obj = NodePath("MassiveObject")
+gravity = NodePath("PCGravityObject")
+space_object = NodePath("SpaceObject")
+camera = NodePath("Camera2D")
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -20,3 +27,21 @@ ignore_rotation = false
 [node name="Input" type="Node" parent="."]
 script = ExtResource("1_a8v3n")
 metadata/_custom_type_script = "uid://bckpa328y35xq"
+
+[node name="MassiveObject" type="Node" parent="." node_paths=PackedStringArray("object", "space_object")]
+script = ExtResource("5_p47bc")
+object = NodePath("..")
+space_object = NodePath("../SpaceObject")
+metadata/_custom_type_script = "uid://vwc6ucqyq0jv"
+
+[node name="SpaceObject" type="Node" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("5_75vfm")
+object = NodePath("..")
+metadata/_custom_type_script = "uid://cs41cmp4f6pfn"
+
+[node name="PCGravityObject" type="Area2D" parent="." node_paths=PackedStringArray("msv_obj", "object")]
+script = ExtResource("4_lvxji")
+sphere_of_influence = 100.0
+msv_obj = NodePath("../MassiveObject")
+object = NodePath("..")
+metadata/_custom_type_script = "uid://nw3wiailsnsf"

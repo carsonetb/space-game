@@ -16,10 +16,11 @@ script = ExtResource("1_nnsk1")
 position = Vector2(558, 622)
 shape = SubResource("RectangleShape2D_rwgxs")
 
-[node name="Player" parent="." instance=ExtResource("2_rwgxs")]
-position = Vector2(-1437, 2)
+[node name="Player" parent="." node_paths=PackedStringArray("test_planet") instance=ExtResource("2_rwgxs")]
+position = Vector2(-12370, -6)
 rotation = -1.5707964
+test_planet = NodePath("../Planet")
 
 [node name="Planet" parent="." instance=ExtResource("3_4wyf3")]
 position = Vector2(-5, 6)
-quality_divider = 13.455005317634024
+mass = 2.3038346e+18

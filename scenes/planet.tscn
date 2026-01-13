@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8eql4qap8qca"]
+[gd_scene load_steps=6 format=3 uid="uid://c8eql4qap8qca"]
 
 [ext_resource type="Script" uid="uid://bedegfdt8gsic" path="res://scenes/planet.gd" id="1_5fdy0"]
 [ext_resource type="Script" uid="uid://cs41cmp4f6pfn" path="res://components/space_object.gd" id="2_ggt7d"]
 [ext_resource type="Script" uid="uid://vwc6ucqyq0jv" path="res://components/massive_object.gd" id="3_0k1rn"]
+[ext_resource type="Script" uid="uid://nw3wiailsnsf" path="res://components/gravity_object.gd" id="4_0k1rn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r7r6h"]
 noise_type = 3
@@ -12,13 +13,14 @@ domain_warp_amplitude = 8.726
 domain_warp_frequency = 0.686
 domain_warp_fractal_type = 0
 
-[node name="Planet" type="Node2D"]
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("massive_obj")]
 script = ExtResource("1_5fdy0")
+mass = 2303834600000.0
+massive_obj = NodePath("MassiveObject")
 noise = SubResource("FastNoiseLite_r7r6h")
-radius = 1000.0
-mountain_height = 100.0
-density = 400.0
-pow_b = 4.083
+mountain_height = 2.214
+density = 2779.16
+pow_b = 13.22
 
 [node name="SpaceObject" type="Node" parent="." node_paths=PackedStringArray("object")]
 script = ExtResource("2_ggt7d")
@@ -29,5 +31,12 @@ metadata/_custom_type_script = "uid://cs41cmp4f6pfn"
 script = ExtResource("3_0k1rn")
 object = NodePath("..")
 space_object = NodePath("../SpaceObject")
-mass = 10000000000.0
+mass = 2303834600000.0
 metadata/_custom_type_script = "uid://vwc6ucqyq0jv"
+
+[node name="PCGravityObject" type="Area2D" parent="." node_paths=PackedStringArray("msv_obj", "object")]
+script = ExtResource("4_0k1rn")
+sphere_of_influence = 30000.0
+msv_obj = NodePath("../MassiveObject")
+object = NodePath("..")
+metadata/_custom_type_script = "uid://nw3wiailsnsf"

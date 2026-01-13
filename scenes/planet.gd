@@ -2,7 +2,8 @@
 class_name Planet
 extends Node2D
 
-@export_custom(PROPERTY_HINT_NONE, "suffix:kg") var mass: float = 10_000_000_000.0
+@export_custom(PROPERTY_HINT_NONE, "suffix:kg") var mass: float
+@export var massive_obj: MassiveObject
 
 @export_group("Procedural")
 @export var noise: FastNoiseLite
@@ -17,10 +18,11 @@ var quality_divider: float = 16.0
 var full_line: Array[Vector2]
 
 func _process(delta: float) -> void:
+	massive_obj.mass = mass
 	queue_redraw()
 
 func _draw() -> void:
-	var viewport_zoom: float = get_viewport().get_final_transform().x.x
+	var viewport_zoom: float = get_viewport().get_final_transform().x.x if Engine.is_editor_hint() else get_viewport().get_camera_2d().zoom.x
 	quality_divider = 2.0 / min(viewport_zoom, 2.0)
 	var line: Array[Vector2] = []
 	var circumference: float = radius * TAU
